@@ -70,5 +70,10 @@ namespace Application.Logic
             }
             return post;
         }
+
+        public async Task<IEnumerable<Post>> GetAllAsync()
+        {
+            return await postDAO.GetAllAsync();
+        }
     }
 }

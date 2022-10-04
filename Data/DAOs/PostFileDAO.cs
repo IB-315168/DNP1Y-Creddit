@@ -34,6 +34,12 @@ namespace Data.DAOs
             return Task.FromResult(post);
         }
 
+        public Task<IEnumerable<Post>> GetAllAsync()
+        {
+            IEnumerable<Post> result = context.Posts.AsEnumerable();
+            return Task.FromResult(result);
+        }
+
         public Task<Post?> GetByIdAsync(int id)
         {
             Post? existing = context.Posts.FirstOrDefault(p => p.Id == id);

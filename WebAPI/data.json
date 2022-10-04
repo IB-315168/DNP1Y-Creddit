@@ -13,7 +13,14 @@
       "CreatorId": 1,
       "Title": "Test",
       "Body": "string",
-      "Created": "2022-10-04T16:01:37.7244725+02:00"
+      "Created": "2022-10-04T16:25:14.5920812+02:00"
+    },
+    {
+      "Id": 2,
+      "CreatorId": 1,
+      "Title": "TEsting again",
+      "Body": "string",
+      "Created": "2022-10-04T16:25:14.5914993+02:00"
     }
   ]
 }
