@@ -1,0 +1,10 @@
+{
+  "Users": [
+    {
+      "Id": 1,
+      "UserName": "IgorB",
+      "Password": "stringstring",
+      "joinedOn": "2022-10-04T12:06:22.9824727+02:00"
+    }
+  ]
+}
