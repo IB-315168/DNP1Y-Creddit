@@ -33,5 +33,12 @@ namespace Data.DAOs
 
             return Task.FromResult(post);
         }
+
+        public Task<Post?> GetByIdAsync(int id)
+        {
+            Post? existing = context.Posts.FirstOrDefault(p => p.Id == id);
+
+            return Task.FromResult(existing);
+        }
     }
 }

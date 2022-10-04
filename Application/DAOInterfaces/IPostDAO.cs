@@ -10,5 +10,6 @@ namespace Application.DAOInterfaces
     public interface IPostDAO
     {
         Task<Post> CreateAsync(Post post);
+        Task<Post?> GetByIdAsync(int id);
     }
 }

@@ -54,5 +54,21 @@ namespace Application.Logic
                 throw new Exception("Title must not exceed 100 characters");
             }
         }
+
+        public async Task<Post> GetByIdAsync(int? id)
+        {
+            if(id == null)
+            {
+                throw new Exception("Id must not be null to find the post");
+            }
+
+            Post? post = await postDAO.GetByIdAsync((int)id);
+
+            if(post == null)
+            {
+                throw new Exception($"Post with {id} has not been found");
+            }
+            return post;
+        }
     }
 }
