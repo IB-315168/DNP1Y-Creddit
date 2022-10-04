@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Application.DAOInterfaces
 {
-    public class DataContainer
+    public interface IPostDAO
     {
-        public ICollection<User> Users { get; set; }
-        public ICollection<Post> Posts { get; set; }
+        Task<Post> CreateAsync(Post post);
     }
 }

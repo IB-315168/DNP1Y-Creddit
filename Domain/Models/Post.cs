@@ -12,12 +12,15 @@ namespace Domain.Models
         public int CreatorId { get; }
         public string Title { get; }
         public string Body { get; }
+        public DateTime Created { get; }
 
         public Post(int creatorId, string title, string body)
         {
             CreatorId = creatorId;
             Title = title;
             Body = body;
+
+            Created = DateTime.Now;
         }
     }
 }

@@ -14,14 +14,14 @@ namespace Data
 
         private DataContainer? dataContainer;
 
-        //public ICollection<Todo> Todos
-        //{
-        //    get
-        //    {
-        //        LazyLoadData();
-        //        return dataContainer!.Todos;
-        //    }
-        //}
+        public ICollection<Post> Posts
+        {
+            get
+            {
+                LazyLoadData();
+                return dataContainer!.Posts;
+            }
+        }
 
         public ICollection<User> Users
         {
@@ -46,7 +46,7 @@ namespace Data
             {
                 dataContainer = new()
                 {
-                    //Todos = new List<Todo>(),
+                    Posts = new List<Post>(),
                     Users = new List<User>()
                 };
                 return;
