@@ -9,17 +9,13 @@ namespace Domain.Models
     public class Post
     {
         public int Id { get; set; }
-        public int CreatorId { get; }
-        public string Title { get; }
-        public string Body { get; }
+        public int CreatorId { get; set;  }
+        public string Title { get; set; }
+        public string Body { get; set; }
         public DateTime Created { get; }
 
-        public Post(int creatorId, string title, string body)
+        public Post()
         {
-            CreatorId = creatorId;
-            Title = title;
-            Body = body;
-
             Created = DateTime.Now;
         }
     }
