@@ -9,15 +9,14 @@ namespace Domain.Models
     public class Comment
     {
         public int Id { get; set; }
-        public int CreatorId { get; }
-        public int PostId { get; }
-        public string Body { get; }
+        public int CreatorId { get; set; }
+        public int PostId { get; set; }
+        public string Body { get; set; }
+        public DateTime CreatedDate { get; }
 
-        public Comment(int creatorId, int postId, string body)
+        public Comment()
         {
-            CreatorId = creatorId;
-            PostId = postId;
-            Body = body;
+            CreatedDate = DateTime.Now;
         }
     }
 }

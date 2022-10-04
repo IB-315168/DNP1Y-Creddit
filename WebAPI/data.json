@@ -2,25 +2,41 @@
   "Users": [
     {
       "Id": 1,
-      "UserName": "string",
+      "UserName": "IgorB",
       "Password": "stringstring",
-      "joinedOn": "2022-10-04T15:40:02.2607387+02:00"
+      "joinedOn": "2022-10-04T16:54:46.650079+02:00"
     }
   ],
   "Posts": [
     {
       "Id": 1,
       "CreatorId": 1,
-      "Title": "Test",
-      "Body": "string",
-      "Created": "2022-10-04T16:25:14.5920812+02:00"
+      "Title": "Further testing",
+      "Body": "Testing if posts AND comments are working",
+      "Created": "2022-10-04T17:00:40.6084303+02:00"
     },
     {
       "Id": 2,
       "CreatorId": 1,
-      "Title": "TEsting again",
-      "Body": "string",
-      "Created": "2022-10-04T16:25:14.5914993+02:00"
+      "Title": "Just for sake of it",
+      "Body": "And to see that it has not been a fluke, we\u0027re gonna try it again...",
+      "Created": "2022-10-04T17:00:40.6084374+02:00"
+    }
+  ],
+  "Comments": [
+    {
+      "Id": 1,
+      "CreatorId": 1,
+      "PostId": 1,
+      "Body": "Testing comments now",
+      "CreatedDate": "2022-10-04T17:00:40.6086332+02:00"
+    },
+    {
+      "Id": 2,
+      "CreatorId": 1,
+      "PostId": 2,
+      "Body": "Testing here as well",
+      "CreatedDate": "2022-10-04T17:00:40.6079428+02:00"
     }
   ]
 }

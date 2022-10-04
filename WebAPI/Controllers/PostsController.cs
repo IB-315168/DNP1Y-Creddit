@@ -12,10 +12,12 @@ namespace WebAPI.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IPostLogic postLogic;
+        private readonly ICommentLogic commentLogic;
 
-        public PostsController(IPostLogic postLogic)
+        public PostsController(IPostLogic postLogic, ICommentLogic commentLogic)
         {
             this.postLogic = postLogic;
+            this.commentLogic = commentLogic;
         }
 
         [HttpPost]
@@ -40,6 +42,21 @@ namespace WebAPI.Controllers
                 Post? post = await postLogic.GetByIdAsync(id);
                 return Ok(post);
             } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost("{id}")]
+        public async Task<ActionResult> CreateCommentAsync([FromBody] CommentCreationDTO commentToCreate, [FromRoute] int id)
+        {
+            try
+            {
+                Comment comment = await commentLogic.CreateAsync(commentToCreate, id);
+                return Created($"[controller]/{id}/{comment.Id}", comment);
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);

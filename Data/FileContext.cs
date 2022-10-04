@@ -14,6 +14,15 @@ namespace Data
 
         private DataContainer? dataContainer;
 
+        public ICollection<Comment> Comments
+        {
+            get
+            {
+                LazyLoadData();
+                return dataContainer!.Comments;
+            }
+        }
+
         public ICollection<Post> Posts
         {
             get
@@ -46,6 +55,7 @@ namespace Data
             {
                 dataContainer = new()
                 {
+                    Comments = new List<Comment>(),
                     Posts = new List<Post>(),
                     Users = new List<User>()
                 };
