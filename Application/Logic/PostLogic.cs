@@ -26,6 +26,7 @@ namespace Application.Logic
             Post toCreate = new Post
             {
                 CreatorId = 1,
+                Created = postToCreate.Created,
                 Title = postToCreate.Title,
                 Body = postToCreate.Body,
             };

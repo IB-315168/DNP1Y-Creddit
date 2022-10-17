@@ -1,0 +1,80 @@
+﻿.card {
+    background-color: #262626;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 250px;
+    padding: 25px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+.field {
+    margin-top: 20px;
+
+}
+
+    .field > input {
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+.acceptbtn {
+    background-color: rgb(235, 119, 52);
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: whitesmoke;
+}
+
+.button-row {
+    margin-top: 15px;
+}
+
+.post-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    width: auto;
+}
+
+    .post-card:hover {
+        background-color: #282828;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+        transition: 0.3s;
+    }
+
+    .post-card > #title {
+        font-size: 1.5em;
+    }
+
+    .post-card > #date {
+        float: right;
+        font-size: 0.7em;
+    }
+
+.post {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    width: auto;
+}
+
+    .post > #title {
+        font-size: 2.7em;
+    }
+    .post > #details {
+        font-size: 1.2em;
+    }
+    .post > #body {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        margin: 25px;
+        padding: 15px;
+        border-radius: 10px;
+        width: auto;
+    }
+    

@@ -10,11 +10,13 @@ namespace Domain.DTOs
     {
         public string Title { get; }
         public string Body { get; }
+        public string Created { get; }
 
         public PostCreationDTO(string title, string body)
         {
             Title = title;
             Body = body;
+            Created = DateTime.Now.ToString("F");
         }
     }
 }

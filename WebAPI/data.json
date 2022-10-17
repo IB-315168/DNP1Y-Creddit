@@ -5,22 +5,28 @@
       "UserName": "IgorB",
       "Password": "stringstring",
       "joinedOn": "2022-10-04T16:54:46.650079+02:00"
+    },
+    {
+      "Id": 2,
+      "UserName": "test",
+      "Password": "stewetgdsagds",
+      "joinedOn": "2022-10-16T23:22:26.2013443+02:00"
     }
   ],
   "Posts": [
     {
       "Id": 1,
       "CreatorId": 1,
-      "Title": "Further testing",
-      "Body": "Testing if posts AND comments are working",
-      "Created": "2022-10-04T17:00:40.6084303+02:00"
+      "Title": "string",
+      "Body": "string",
+      "Created": "Monday, 17 October 2022 00.38.14"
     },
     {
       "Id": 2,
       "CreatorId": 1,
-      "Title": "Just for sake of it",
-      "Body": "And to see that it has not been a fluke, we\u0027re gonna try it again...",
-      "Created": "2022-10-04T17:00:40.6084374+02:00"
+      "Title": "String length test",
+      "Body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Created": "Monday, 17 October 2022 00.56.09"
     }
   ],
   "Comments": [
@@ -29,14 +35,14 @@
       "CreatorId": 1,
       "PostId": 1,
       "Body": "Testing comments now",
-      "CreatedDate": "2022-10-04T17:00:40.6086332+02:00"
+      "CreatedDate": "2022-10-17T00:56:09.9337231+02:00"
     },
     {
       "Id": 2,
       "CreatorId": 1,
-      "PostId": 2,
+      "PostId": 1,
       "Body": "Testing here as well",
-      "CreatedDate": "2022-10-04T17:00:40.6079428+02:00"
+      "CreatedDate": "2022-10-17T00:56:09.9337268+02:00"
     }
   ]
 }

@@ -12,11 +12,8 @@ namespace Domain.Models
         public int CreatorId { get; set;  }
         public string Title { get; set; }
         public string Body { get; set; }
-        public DateTime Created { get; }
+        public string Created { get; set; }
 
-        public Post()
-        {
-            Created = DateTime.Now;
-        }
+        
     }
 }
