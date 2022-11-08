@@ -32,5 +32,11 @@ namespace Data.DAOs
 
             return Task.FromResult(comment);
         }
+
+        public Task<IEnumerable<Comment>> GetAllAsync(int id)
+        {
+            IEnumerable<Comment> comments = context.Comments.Where(c => c.PostId == id);
+            return Task.FromResult(comments);
+        }
     }
 }

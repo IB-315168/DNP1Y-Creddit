@@ -38,6 +38,16 @@ namespace Application.Logic
             return created;
         }
 
+        public async Task<User> GetByIdAsync(int id)
+        {
+            User? existing = await userDAO.GetByIdAsync(id);
+
+            if (existing == null)
+                throw new Exception("User does not exist");
+
+            return existing;
+        }
+
         private void ValidateData(UserCreationDTO userToCreate)
         {
             string userName = userToCreate.UserName;

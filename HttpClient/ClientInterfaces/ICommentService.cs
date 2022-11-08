@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.LogicInterfaces
+namespace HttpClients.ClientInterfaces
 {
-    public interface ICommentLogic
+    public interface ICommentService
     {
-        Task<Comment> CreateAsync(CommentCreationDTO commentToCreate, int postId);
+        Task<Comment> CreateAsync(CommentCreationDTO dto, int id);
         Task<IEnumerable<Comment>> GetAllAsync(int id);
     }
 }

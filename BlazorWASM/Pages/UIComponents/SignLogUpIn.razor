@@ -1,0 +1,69 @@
+﻿@namespace UIComponents
+
+<div class="card">
+    @if(Login) {
+        <h3>Log in</h3>
+    } else {
+        <h3>Sign Up</h3>
+    }
+    <div class="form-group field">
+        <label>User name:</label>
+        <input type="text" @bind="username" @bind:event="oninput" />
+        <input type="password" @bind="password" @bind:event="oninput" />
+        @if (!string.IsNullOrEmpty(resultMsg))
+        {
+            <label>@resultMsg</label>
+        }
+    </div>
+    <div class="button-row">
+        <button @onclick="(args) => OnClick.InvokeAsync(new string[] {username, password})" disabled="@(string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))" class="acceptbtn">
+            @if(Login) {
+                <p>Log in</p>
+            } else {
+                <p>Sign up</p>
+            }
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public bool Login { get; set; }
+    [Parameter]
+    public EventCallback<string[]> OnClick { get; set; }
+
+    private string username = "";
+    private string password = "";
+    private string resultMsg = "";
+
+    // Could be a callback instead, but I'm too dumb/lazy to merge and 
+    //private async Task LogSign() {
+    //    if(Login) {
+    //        try
+    //        {
+    //            await authService.LoginAsync(new UserLoginDTO(username, password));
+
+    //            username = "";
+    //            password = "";
+    //            resultMsg = $"Logged in succsessfully";
+    //            navMgr.NavigateTo("/");
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            Console.WriteLine(e);
+    //            resultMsg = e.Message;
+    //        }
+    //    } else {
+    //        try {
+    //            await userService.CreateAsync(new UserCreationDTO(username, password));
+                
+
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            Console.WriteLine(e);
+    //            resultMsg = e.Message;
+    //        }
+    //    }
+    //}
+}

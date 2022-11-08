@@ -1,0 +1,67 @@
+﻿@page "/profile/{id:int}"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IUserService userService
+@inject IPostService postService
+@inject NavigationManager navMgr
+
+<AuthorizeView>
+    <NotAuthorized>
+        <label>You must be logged in to perform this action</label>
+    </NotAuthorized>
+    <Authorized>
+        @if (user == null) {
+        <label>Loading User profile...</label>
+        } else {
+        <h3>Profile - @user.UserName</h3>
+
+        <div class="details">
+            <table>
+                <tr>
+                    <td><b>Username: </b></td>
+                    <td>@user.UserName</td>
+                </tr>
+                <tr>
+                    <td><b>Joined on: </b></td>
+                    <td>@user.joinedOn</td>
+                </tr>
+            </table>
+        </div>
+        <h3>@user.UserName Posts</h3>
+            @if (userPosts == null || userPosts.Count == 0) {
+                <label>This user does not have any posts</label>
+            } else {
+                <div class="users-container">
+                    @foreach (Post post in userPosts)
+                    {
+                        <div class="post-card" @onclick="@(() => navMgr.NavigateTo($"/post/{post.Id}"))">
+                            <label id="title">@post.Title</label>
+                            <label id="date">@post.Created</label><br>
+                            @if (post.Body.Length > 50)
+                            {
+                                <label id="user">@post.Body.Substring(0,50)...</label>
+                            }
+                            else
+                            {
+                                <label id="user">@post.Body</label>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+
+        }
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private ICollection<Post> userPosts = null;
+    private User user = null;
+
+    protected override async Task OnInitializedAsync() {
+        user = await userService.GetByIdAsync(Id);
+        userPosts = await postService.GetAllByUserIdAsync(Id);
+    }
+}

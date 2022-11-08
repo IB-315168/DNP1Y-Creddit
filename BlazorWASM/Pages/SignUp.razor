@@ -1,0 +1,44 @@
+﻿@page "/signup"
+
+@using Domain.DTOs
+@using HttpClients.ClientInterfaces
+@using UIComponents
+@inject IUserService userService
+
+<SignLogUpIn Login=false OnClick="(credentials) => Create(credentials)"></SignLogUpIn>
+
+@if (!string.IsNullOrEmpty(resultMsg))
+{
+    if(resultMsg.Contains("success")) {
+        <label>User successfully created, you can <a href="/login">log in</a> now</label>
+    } else {
+        <label style="color: whitesmoke">@resultMsg</label>
+    }
+}
+
+
+@code {
+    private string resultMsg = "";
+
+    private async Task Create(string[] credentials)
+    {
+        resultMsg = "";
+
+        try
+        {
+            if (credentials.Length < 2)
+            {
+                throw new Exception("Fill out both fields to proceed");
+            }
+
+            await userService.CreateAsync(new UserCreationDTO(credentials[0], credentials[1]));
+            resultMsg = "User successfully created";
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            resultMsg = e.Message;
+        }
+    }
+
+}

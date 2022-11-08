@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.DTOs
 {
-    public class UserCreationDTO
+    public class UserLoginDTO
     {
         public string UserName { get; }
         public string Password { get; }
-        public string JoinedOn { get; }
 
-        public UserCreationDTO(string userName, string passWord)
+        public UserLoginDTO(string userName, string password)
         {
             UserName = userName;
-            Password = passWord;
-            JoinedOn = DateTime.Now.ToString("F");
+            Password = password;
         }
     }
 }

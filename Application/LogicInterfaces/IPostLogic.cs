@@ -13,5 +13,6 @@ namespace Application.LogicInterfaces
         Task<Post> CreateAsync(PostCreationDTO postToCreate);
         Task<Post> GetByIdAsync(int? id);
         Task<IEnumerable<Post>> GetAllAsync();
+        Task<IEnumerable<Post>> GetByUserIdAsync(int id);
     }
 }

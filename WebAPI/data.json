@@ -4,45 +4,125 @@
       "Id": 1,
       "UserName": "IgorB",
       "Password": "stringstring",
-      "joinedOn": "2022-10-04T16:54:46.650079+02:00"
+      "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
     },
     {
       "Id": 2,
       "UserName": "test",
       "Password": "stewetgdsagds",
-      "joinedOn": "2022-10-16T23:22:26.2013443+02:00"
+      "joinedOn": "2022-10-16T23:22:26.2013443\u002B02:00"
+    },
+    {
+      "Id": 3,
+      "UserName": "TestUser",
+      "Password": "testingtest",
+      "joinedOn": "2022-11-06T23:16:09.7688436\u002B01:00"
+    },
+    {
+      "Id": 4,
+      "UserName": "TestingUser",
+      "Password": "testingtest",
+      "joinedOn": "2022-11-06T23:17:50.6399168\u002B01:00"
+    },
+    {
+      "Id": 5,
+      "UserName": "TestingUser1",
+      "Password": "thisisatest",
+      "joinedOn": "2022-11-06T23:23:57.8011144\u002B01:00"
+    },
+    {
+      "Id": 6,
+      "UserName": "TestingUser2",
+      "Password": "testingaaa",
+      "joinedOn": "2022-11-06T23:25:38.8727292\u002B01:00"
     }
   ],
   "Posts": [
     {
       "Id": 1,
-      "CreatorId": 1,
-      "Title": "string",
-      "Body": "string",
-      "Created": "Monday, 17 October 2022 00.38.14"
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
+      "Title": "Testing posting",
+      "Body": "this is a test of posting form",
+      "Created": "Monday, 7 November 2022 12.00.46"
     },
     {
       "Id": 2,
-      "CreatorId": 1,
-      "Title": "String length test",
-      "Body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Created": "Monday, 17 October 2022 00.56.09"
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
+      "Title": "Testing - posting through from",
+      "Body": "This is a test if it is possible to post something on here through this form as it barely works. :/",
+      "Created": "Monday, 7 November 2022 12.38.44"
+    },
+    {
+      "Id": 3,
+      "Creator": {
+        "Id": 6,
+        "UserName": "TestingUser2",
+        "Password": "testingaaa",
+        "joinedOn": "2022-11-06T23:25:38.8727292\u002B01:00"
+      },
+      "Title": "Post from another user",
+      "Body": "This is a post from another user.",
+      "Created": "Tuesday, 8 November 2022 09.24.36"
     }
   ],
   "Comments": [
     {
       "Id": 1,
-      "CreatorId": 1,
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
       "PostId": 1,
-      "Body": "Testing comments now",
-      "CreatedDate": "2022-10-17T00:56:09.9337231+02:00"
+      "Body": "Testing comments, for the last time",
+      "CreatedDate": "Monday, 7 November 2022 12.21.26"
     },
     {
       "Id": 2,
-      "CreatorId": 1,
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
+      "PostId": 2,
+      "Body": "It does! Yay!",
+      "CreatedDate": "Monday, 7 November 2022 12.38.55"
+    },
+    {
+      "Id": 3,
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
+      "PostId": 2,
+      "Body": "Also, it\u0027s supposed to be \u0022form\u0022",
+      "CreatedDate": "Monday, 7 November 2022 14.46.15"
+    },
+    {
+      "Id": 4,
+      "Creator": {
+        "Id": 6,
+        "UserName": "TestingUser2",
+        "Password": "testingaaa",
+        "joinedOn": "2022-11-06T23:25:38.8727292\u002B01:00"
+      },
       "PostId": 1,
-      "Body": "Testing here as well",
-      "CreatedDate": "2022-10-17T00:56:09.9337268+02:00"
+      "Body": "Great post! Really made me think, have some silver and gold awards",
+      "CreatedDate": "Tuesday, 8 November 2022 09.25.42"
     }
   ]
 }

@@ -12,5 +12,6 @@ namespace Application.DAOInterfaces
         Task<Post> CreateAsync(Post post);
         Task<Post?> GetByIdAsync(int id);
         Task<IEnumerable<Post>> GetAllAsync();
+        Task<IEnumerable<Post>> GetByUserIdAsync(int id);
     }
 }

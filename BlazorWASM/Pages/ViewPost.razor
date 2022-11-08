@@ -4,6 +4,8 @@
 @using HttpClients.ClientInterfaces
 @using Microsoft.AspNetCore.Components
 @inject IPostService postService
+@inject ICommentService commentService
+@inject AuthenticationStateProvider asp
 @inject NavigationManager navMgr
 
 @if (!string.IsNullOrEmpty(msg))
@@ -16,10 +18,28 @@
 @if(post != null) {
     <div class="post">
         <div id="title">@post.Title</div>
-        <div id="details">Posted on <b>@post.Created</b> by <b>@post.CreatorId</b></div>
+        <div id="details">Posted on <b>@post.Created</b> by <b><a href="/profile/@post.Creator.Id">@post.Creator.UserName</a></b></div>
         <div id="body">@post.Body</div>
     </div>
 }
+
+<div class="comments">
+    <div class="commentform">
+        <h5>Comment on this post:</h5>
+        <button @onclick="@PostComment" class="acceptbtn">Comment</button>
+        <input type="text" @bind="commentBody"/>
+    </div>
+    @if(comments != null) {
+
+            @foreach(Comment comment in comments) {
+                <div class="comment">
+                    <div id="date">On: @comment.CreatedDate</div>
+                    <div id="creator">User: <a href="/profile/@comment.Creator.Id">@comment.Creator.UserName</a></div>
+                    <div id="body">@comment.Body</div>
+                </div>
+            }
+    }
+</div>
 
 
 
@@ -29,19 +49,39 @@
 
     private Post post = null!;
     private string msg = "";
-    //private IEnumerable<Comment>? comments;
+    private IEnumerable<Comment> comments;
+
+    private string commentBody = "";
 
     protected override async Task OnInitializedAsync()
     {
         msg = "";
         try
         {
-            //comments = await userService.GetUsers();
+            comments = await commentService.GetAllAsync(Id);
             post = await postService.GetByIdAsync(Id);
-            
+
         }
         catch (Exception e)
         {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private async Task PostComment() {
+        msg = "";
+        try {
+            CommentCreationDTO dto = new CommentCreationDTO(Int32.Parse(asp.GetAuthenticationStateAsync().Result
+                .User.Claims.First(c => c.Type.Equals("Id")).Value))
+            {
+                Body = commentBody
+            };
+            Console.WriteLine(dto.CreatorId);
+            await commentService.CreateAsync(dto, Id);
+            comments = await commentService.GetAllAsync(Id);
+            commentBody = "";
+        } catch (Exception e) {
             Console.WriteLine(e);
             msg = e.Message;
         }

@@ -6,41 +6,55 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Home</h1>
+<AuthorizeView>
+    <NotAuthorized>
+        <h1>Hello and Welcome to Creddit!</h1>
+        <label>Go on, visit "Sign up" page and join one of the smallest forums to ever exist!</label>
+        <div class="randomImage">
+            <label>Please enjoy this random image:</label>
+            <img src="https://picsum.photos/800" />
+        </div>
+    </NotAuthorized>
+    <Authorized>
+        <h1>Home</h1>
 
-@if (!string.IsNullOrEmpty(msg))
-{
-    <div>
-        <span>@msg</span>
-    </div>
-}
-
-@if (posts == null)
-{
-    <span>Loading..</span>
-}
-else if (!posts.Any())
-{
-    <span>No posts to be found</span>
-}
-else
-{
-    <div class="users-container">
-        @foreach (Post post in posts)
+        @if (!string.IsNullOrEmpty(msg))
         {
-            <div class="post-card" @onclick="@(() => navMgr.NavigateTo($"/post/{post.Id}"))">
-                <label id="title">@post.Title</label>
-                <label id="date">@post.Created</label><br>
-                @if(post.Body.Length > 50) {
-                    <label id="user">@post.Body.Substring(0,50)...</label>
-                }
-                else {
-                    <label id="user">@post.Body</label>
+            <div>
+                <span>@msg</span>
+            </div>
+        }
+
+        @if (posts == null)
+        {
+            <span>Loading..</span>
+        }
+        else if (!posts.Any())
+        {
+            <span>No posts to be found</span>
+        }
+        else
+        {
+            <div class="users-container">
+                @foreach (Post post in posts)
+                {
+                    <div class="post-card" @onclick="@(() => navMgr.NavigateTo($"/post/{post.Id}"))">
+                        <label id="title">@post.Title</label>
+                        <label id="date">@post.Created</label><br>
+                        @if (post.Body.Length > 50)
+                        {
+                            <label id="user">@post.Body.Substring(0,50)...</label>
+                        }
+                        else
+                        {
+                            <label id="user">@post.Body</label>
+                        }
+                    </div>
                 }
             </div>
         }
-    </div>
-}
+    </Authorized>
+</AuthorizeView>
 
 @code {
     private IEnumerable<Post>? posts;

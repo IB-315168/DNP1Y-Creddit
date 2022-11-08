@@ -13,19 +13,28 @@ namespace Application.Logic
     public class PostLogic : IPostLogic
     {
         private readonly IPostDAO postDAO;
+        private readonly IUserDAO userDAO;
 
-        public PostLogic(IPostDAO postDAO)
+        public PostLogic(IPostDAO postDAO, IUserDAO userDAO)
         {
             this.postDAO = postDAO;
+            this.userDAO = userDAO;
         }
 
         public async Task<Post> CreateAsync(PostCreationDTO postToCreate)
         {
             ValidateData(postToCreate);
 
+            User? existing = await userDAO.GetByIdAsync(postToCreate.CreatorId);
+
+            if(existing == null)
+            {
+                throw new Exception("User does not exist.");
+            }
+
             Post toCreate = new Post
             {
-                CreatorId = 1,
+                Creator = existing,
                 Created = postToCreate.Created,
                 Title = postToCreate.Title,
                 Body = postToCreate.Body,
@@ -75,6 +84,11 @@ namespace Application.Logic
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
             return await postDAO.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<Post>> GetByUserIdAsync(int id)
+        {
+            return await postDAO.GetByUserIdAsync(id);
         }
     }
 }

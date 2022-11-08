@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{66BB306F-9800-4063-8C9C-88ABBE0AA855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWASM", "BlazorWASM\BlazorWASM.csproj", "{9D1DFFDC-4FE1-4542-9FEA-3B6F4F9FB562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWASM", "BlazorWASM\BlazorWASM.csproj", "{9D1DFFDC-4FE1-4542-9FEA-3B6F4F9FB562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClients", "HttpClient\HttpClients.csproj", "{92E82BCD-5E00-43F9-BF31-8DA3D97D6101}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClients", "HttpClient\HttpClients.csproj", "{92E82BCD-5E00-43F9-BF31-8DA3D97D6101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

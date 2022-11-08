@@ -11,5 +11,6 @@ namespace Application.DAOInterfaces
     public interface ICommentDAO
     {
         Task<Comment> CreateAsync(Comment comment);
+        Task<IEnumerable<Comment>> GetAllAsync(int id);
     }
 }

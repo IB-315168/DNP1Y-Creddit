@@ -1,0 +1,48 @@
+﻿@page "/CreatePost"
+@using Domain.DTOs
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@using Microsoft.AspNetCore.Components
+@inject IPostService postService
+@inject AuthenticationStateProvider asp
+@inject NavigationManager navMgr
+
+<AuthorizeView>
+    <NotAuthorized>
+        <label>You must be logged in to perform this action</label>
+    </NotAuthorized>
+    <Authorized>
+        <div class="post-form">
+            <h3>Create a post</h3>
+            <label>Title:</label>
+            <input type="text" @bind="title" @bind:event="oninput" />
+            <label>Body:</label>
+            <textarea @bind="body" @bind:event="oninput" cols="40" rows="5"></textarea>
+            @if (!string.IsNullOrEmpty(resultMsg))
+            {
+                <label>@resultMsg</label>
+            }
+            <div class="button-row">
+                <button @onclick="Post" disabled="@(string.IsNullOrEmpty(title) && string.IsNullOrEmpty(body))" class="acceptbtn">Post</button>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private string title = "";
+    private string body = "";
+    private string resultMsg = "";
+
+    private async Task Post() {
+        try {
+            PostCreationDTO dto = new PostCreationDTO(Int32.Parse(asp.GetAuthenticationStateAsync().Result
+                .User.Claims.First(c => c.Type.Equals("Id")).Value), title, body);
+            await postService.CreateAsync(dto);
+            navMgr.NavigateTo("/");
+        } catch (Exception e) {
+            Console.WriteLine(e);
+            resultMsg = e.Message;
+        }
+    }
+}

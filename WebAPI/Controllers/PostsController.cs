@@ -34,7 +34,22 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/api/[controller]/user")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetByUserIdAsync([FromQuery] int id)
+        {
+            try
+            {
+                IEnumerable<Post> posts = await postLogic.GetByUserIdAsync(id);
+                return Ok(posts);
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+
+
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Post>> GetByIdAsync([FromRoute] int? id)
         {
             try
@@ -55,21 +70,6 @@ namespace WebAPI.Controllers
             {
                 IEnumerable<Post> posts = await postLogic.GetAllAsync();
                 return Ok(posts);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return StatusCode(500, e.Message);
-            }
-        }
-
-        [HttpPost("{id}")]
-        public async Task<ActionResult> CreateCommentAsync([FromBody] CommentCreationDTO commentToCreate, [FromRoute] int id)
-        {
-            try
-            {
-                Comment comment = await commentLogic.CreateAsync(commentToCreate, id);
-                return Created($"[controller]/{id}/{comment.Id}", comment);
             }
             catch (Exception e)
             {

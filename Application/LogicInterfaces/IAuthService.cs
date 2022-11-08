@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Application.LogicInterfaces
 {
-    public interface ICommentLogic
+    public interface IAuthService
     {
-        Task<Comment> CreateAsync(CommentCreationDTO commentToCreate, int postId);
-        Task<IEnumerable<Comment>> GetAllAsync(int id);
+        Task<User> LoginAsync(UserLoginDTO dto);
     }
 }

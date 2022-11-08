@@ -46,5 +46,11 @@ namespace Data.DAOs
 
             return Task.FromResult(existing);
         }
+
+        public Task<IEnumerable<Post>> GetByUserIdAsync(int id)
+        {
+            IEnumerable<Post> result = context.Posts.Where(p => p.Creator.Id == id);
+            return Task.FromResult(result);
+        }
     }
 }

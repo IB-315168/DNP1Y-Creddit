@@ -30,5 +30,20 @@ namespace WebAPI.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<User>> GetByIdAsync([FromRoute] int id)
+        {
+            try
+            {
+                User user = await userLogic.GetByIdAsync(id);
+                return Created($"[controller]/{user.Id}", user);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
     }
 }

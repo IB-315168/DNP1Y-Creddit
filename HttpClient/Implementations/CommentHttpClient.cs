@@ -8,51 +8,53 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace HttpClients.Implementations
 {
-    public class UserHttpClient : IUserService
+    public class CommentHttpClient : ICommentService
     {
         private readonly HttpClient client;
 
-        public UserHttpClient(HttpClient client)
+        public CommentHttpClient(HttpClient client)
         {
             this.client = client;
         }
 
-        public async Task<User> CreateAsync(UserCreationDTO dto)
+        public async Task<Comment> CreateAsync(CommentCreationDTO dto, int id)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("/api/users", dto);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"/api/comment/{id}", dto);
             string result = await response.Content.ReadAsStringAsync();
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(result);
             }
 
-            User user = JsonSerializer.Deserialize<User>(result, new JsonSerializerOptions
+            Comment comment = JsonSerializer.Deserialize<Comment>(result, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             })!;
 
-            return user;
+            return comment;
         }
 
-        public async Task<User?> GetByIdAsync(int id)
+        public async Task<IEnumerable<Comment>> GetAllAsync(int id)
         {
-            HttpResponseMessage response = await client.GetAsync($"/api/users/{id}");
+            HttpResponseMessage response = await client.GetAsync($"/api/comment/{id}");
             string result = await response.Content.ReadAsStringAsync();
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(result);
             }
 
-            User user = JsonSerializer.Deserialize<User>(result, new JsonSerializerOptions
+            IEnumerable<Comment> comments = JsonSerializer.Deserialize<IEnumerable<Comment>>(result, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             })!;
 
-            return user;
+            return comments;
         }
     }
 }
