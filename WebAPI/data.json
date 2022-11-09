@@ -35,6 +35,24 @@
       "UserName": "TestingUser2",
       "Password": "testingaaa",
       "joinedOn": "2022-11-06T23:25:38.8727292\u002B01:00"
+    },
+    {
+      "Id": 7,
+      "UserName": "Testing User",
+      "Password": "testtest",
+      "joinedOn": null
+    },
+    {
+      "Id": 8,
+      "UserName": "test134",
+      "Password": "testtest",
+      "joinedOn": null
+    },
+    {
+      "Id": 9,
+      "UserName": "testjoined",
+      "Password": "testtest",
+      "joinedOn": "Wednesday, 9 November 2022 17.36.52"
     }
   ],
   "Posts": [
@@ -73,6 +91,42 @@
       "Title": "Post from another user",
       "Body": "This is a post from another user.",
       "Created": "Tuesday, 8 November 2022 09.24.36"
+    },
+    {
+      "Id": 4,
+      "Creator": {
+        "Id": 7,
+        "UserName": "Testing User",
+        "Password": "testtest",
+        "joinedOn": null
+      },
+      "Title": "Hi! I\u0027m new to this!",
+      "Body": "Hi, this is my first post. \nI am just testing if it is working.\nBest regards,\nTesting",
+      "Created": "Wednesday, 9 November 2022 17.23.59"
+    },
+    {
+      "Id": 5,
+      "Creator": {
+        "Id": 9,
+        "UserName": "testjoined",
+        "Password": "testtest",
+        "joinedOn": "Wednesday, 9 November 2022 17.36.52"
+      },
+      "Title": "Inconsistencies in dates",
+      "Body": "Some of the dates are inconsistent because I changed the way the \u0022joinedOn\u0022 works mid-implementation. Sorry :/",
+      "Created": "Wednesday, 9 November 2022 17.48.54"
+    },
+    {
+      "Id": 6,
+      "Creator": {
+        "Id": 1,
+        "UserName": "IgorB",
+        "Password": "stringstring",
+        "joinedOn": "2022-10-04T16:54:46.650079\u002B02:00"
+      },
+      "Title": "\u0022Forum\u0022 \u0022instructions\u0022",
+      "Body": "Hello,\n\nThis forum does not offer much. There is:\n- log in/sign up form (using UIComponent)\n- home page, containing posts\n- home page with cool images for when you\u0027re not logged in\n- create post page\n- view post page (with comments)\n- view profile page (with posts)\n\nI know there aren\u0027t that many features and I apologise, but:\n\n- I didn\u0027t have any other ideas for features, really. The only idea I had was tags for posts and I can make this if it isn\u0027t enough. \nSorry, it\u0027s been rough couple of weeks, I really like the course, I just didn\u0027t have time.\n- I also did not use the AuthPolicies because, well, I had no idea how to apply different access levels to so little features.\n\nHave \u0022fun\u0022!\n\nBest regards,\nIgor Bulinski (315168)",
+      "Created": "Wednesday, 9 November 2022 19.18.45"
     }
   ],
   "Comments": [
@@ -123,6 +177,30 @@
       "PostId": 1,
       "Body": "Great post! Really made me think, have some silver and gold awards",
       "CreatedDate": "Tuesday, 8 November 2022 09.25.42"
+    },
+    {
+      "Id": 5,
+      "Creator": {
+        "Id": 7,
+        "UserName": "Testing User",
+        "Password": "testtest",
+        "joinedOn": null
+      },
+      "PostId": 1,
+      "Body": "Let me comment as well!",
+      "CreatedDate": "Wednesday, 9 November 2022 17.24.31"
+    },
+    {
+      "Id": 6,
+      "Creator": {
+        "Id": 9,
+        "UserName": "testjoined",
+        "Password": "testtest",
+        "joinedOn": "Wednesday, 9 November 2022 17.36.52"
+      },
+      "PostId": 4,
+      "Body": "It does, nice post.",
+      "CreatedDate": "Wednesday, 9 November 2022 17.40.07"
     }
   ]
 }

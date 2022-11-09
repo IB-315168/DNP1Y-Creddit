@@ -54,7 +54,7 @@ namespace HttpClients.Implementations
                 PropertyNameCaseInsensitive = true
             })!;
 
-            return comments;
+            return comments.OrderByDescending(c => c.CreatedDate).ToList();
         }
     }
 }

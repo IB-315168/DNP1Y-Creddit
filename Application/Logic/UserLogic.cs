@@ -30,7 +30,8 @@ namespace Application.Logic
             User toCreate = new User
             {
                 UserName = userToCreate.UserName,
-                Password = userToCreate.Password
+                Password = userToCreate.Password,
+                joinedOn = userToCreate.JoinedOn
             };
 
             User created = await userDAO.CreateAsync(toCreate);

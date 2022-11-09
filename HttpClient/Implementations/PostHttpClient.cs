@@ -53,7 +53,7 @@ namespace HttpClients.Implementations
                 PropertyNameCaseInsensitive = true
             })!;
 
-            return posts;
+            return posts.OrderByDescending(p => p.Created).ToList();
         }
 
         public async Task<ICollection<Post>> GetAllByUserIdAsync(int id)

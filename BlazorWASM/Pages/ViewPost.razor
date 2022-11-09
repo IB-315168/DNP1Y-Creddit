@@ -8,38 +8,48 @@
 @inject AuthenticationStateProvider asp
 @inject NavigationManager navMgr
 
-@if (!string.IsNullOrEmpty(msg))
-{
-    <div>
-        <span>@msg</span>
-    </div>
-}
+<AuthorizeView>
+    <NotAuthorized>
+        <label>You must be logged in to perform this action</label>
+    </NotAuthorized>
+    <Authorized>
+        @if (!string.IsNullOrEmpty(msg))
+        {
+            <div>
+                <span>@msg</span>
+            </div>
+        }
 
-@if(post != null) {
-    <div class="post">
-        <div id="title">@post.Title</div>
-        <div id="details">Posted on <b>@post.Created</b> by <b><a href="/profile/@post.Creator.Id">@post.Creator.UserName</a></b></div>
-        <div id="body">@post.Body</div>
-    </div>
-}
+        @if (post != null)
+        {
+            <div class="post">
+                <div id="title">@post.Title</div>
+                <div id="details">Posted on <b>@post.Created</b> by <b><a href="/profile/@post.Creator.Id">@post.Creator.UserName</a></b></div>
+                <div id="body"><p style="white-space: pre-line">@post.Body</p></div>
+            </div>
+        }
 
-<div class="comments">
-    <div class="commentform">
-        <h5>Comment on this post:</h5>
-        <button @onclick="@PostComment" class="acceptbtn">Comment</button>
-        <input type="text" @bind="commentBody"/>
-    </div>
-    @if(comments != null) {
+        <div class="comments">
+            <div class="commentform">
+                <h5>Comment on this post:</h5>
+                <button @onclick="@PostComment" class="acceptbtn">Comment</button>
+                <input type="text" @bind="commentBody" />
+            </div>
+            @if (comments != null)
+            {
 
-            @foreach(Comment comment in comments) {
-                <div class="comment">
-                    <div id="date">On: @comment.CreatedDate</div>
-                    <div id="creator">User: <a href="/profile/@comment.Creator.Id">@comment.Creator.UserName</a></div>
-                    <div id="body">@comment.Body</div>
-                </div>
+                @foreach (Comment comment in comments)
+                {
+                    <div class="comment">
+                        <div id="date">On: @comment.CreatedDate</div>
+                        <div id="creator">User: <a href="/profile/@comment.Creator.Id">@comment.Creator.UserName</a></div>
+                        <div id="body">@comment.Body</div>
+                    </div>
+                }
             }
-    }
-</div>
+        </div>
+    </Authorized>
+</AuthorizeView>
 
 
 
