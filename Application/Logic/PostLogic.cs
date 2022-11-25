@@ -32,9 +32,8 @@ namespace Application.Logic
                 throw new Exception("User does not exist.");
             }
 
-            Post toCreate = new Post
+            Post toCreate = new Post(existing)
             {
-                Creator = existing,
                 Created = postToCreate.Created,
                 Title = postToCreate.Title,
                 Body = postToCreate.Body,

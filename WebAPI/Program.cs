@@ -6,6 +6,8 @@ using Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EfcDataAccess.DAOs;
+using EfcDataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +19,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<FileContext>();
-builder.Services.AddScoped<IUserDAO, UserFileDAO>();
+builder.Services.AddScoped<IUserDAO, UserEfcDAO>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
-builder.Services.AddScoped<IPostDAO, PostFileDAO>();
+builder.Services.AddScoped<IPostDAO, PostEfcDAO>();
 builder.Services.AddScoped<IPostLogic, PostLogic>();
 
-builder.Services.AddScoped<ICommentDAO, CommentFileDAO>();
+builder.Services.AddScoped<ICommentDAO, CommentEfcDAO>();
 builder.Services.AddScoped<ICommentLogic, CommentLogic>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddDbContext<UPCContext>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

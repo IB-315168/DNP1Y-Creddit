@@ -27,10 +27,8 @@ namespace Application.Logic
                 throw new Exception("Username already taken!");
 
             ValidateData(userToCreate);
-            User toCreate = new User
+            User toCreate = new User(userToCreate.UserName, userToCreate.Password)
             {
-                UserName = userToCreate.UserName,
-                Password = userToCreate.Password,
                 joinedOn = userToCreate.JoinedOn
             };
 

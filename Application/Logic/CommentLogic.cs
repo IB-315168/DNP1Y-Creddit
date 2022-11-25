@@ -14,11 +14,13 @@ namespace Application.Logic
     {
         private readonly ICommentDAO commentDAO;
         private readonly IUserDAO userDAO;
+        private readonly IPostDAO postDAO;
 
-        public CommentLogic(IUserDAO userDAO, ICommentDAO commentDAO)
+        public CommentLogic(IUserDAO userDAO, ICommentDAO commentDAO, IPostDAO postDAO)
         {
             this.commentDAO = commentDAO;
             this.userDAO = userDAO;
+            this.postDAO = postDAO;
         }
 
         public async Task<Comment> CreateAsync(CommentCreationDTO commentToCreate, int postId)
@@ -33,10 +35,15 @@ namespace Application.Logic
                 throw new Exception("User does not exist.");
             }
 
-            Comment toCreate = new Comment()
+            Post? existingPost = await postDAO.GetByIdAsync(postId);
+
+            if(existingPost == null)
             {
-                Creator = existing,
-                PostId = postId,
+                throw new Exception("Post does not exist");
+            }
+
+            Comment toCreate = new Comment(existing, existingPost)
+            {
                 Body = commentToCreate.Body,
                 CreatedDate = commentToCreate.Created
             };

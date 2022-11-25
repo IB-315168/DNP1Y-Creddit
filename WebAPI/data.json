@@ -53,6 +53,12 @@
       "UserName": "testjoined",
       "Password": "testtest",
       "joinedOn": "Wednesday, 9 November 2022 17.36.52"
+    },
+    {
+      "Id": 10,
+      "UserName": "TestUser124",
+      "Password": "testtest",
+      "joinedOn": "Friday, 11 November 2022 20.24.43"
     }
   ],
   "Posts": [
@@ -127,6 +133,18 @@
       "Title": "\u0022Forum\u0022 \u0022instructions\u0022",
       "Body": "Hello,\n\nThis forum does not offer much. There is:\n- log in/sign up form (using UIComponent)\n- home page, containing posts\n- home page with cool images for when you\u0027re not logged in\n- create post page\n- view post page (with comments)\n- view profile page (with posts)\n\nI know there aren\u0027t that many features and I apologise, but:\n\n- I didn\u0027t have any other ideas for features, really. The only idea I had was tags for posts and I can make this if it isn\u0027t enough. \nSorry, it\u0027s been rough couple of weeks, I really like the course, I just didn\u0027t have time.\n- I also did not use the AuthPolicies because, well, I had no idea how to apply different access levels to so little features.\n\nHave \u0022fun\u0022!\n\nBest regards,\nIgor Bulinski (315168)",
       "Created": "Wednesday, 9 November 2022 19.18.45"
+    },
+    {
+      "Id": 7,
+      "Creator": {
+        "Id": 10,
+        "UserName": "TestUser124",
+        "Password": "testtest",
+        "joinedOn": "Friday, 11 November 2022 20.24.43"
+      },
+      "Title": "I\u0027m about to post a post",
+      "Body": "This is a post.",
+      "Created": "Friday, 11 November 2022 20.25.56"
     }
   ],
   "Comments": [
@@ -201,6 +219,18 @@
       "PostId": 4,
       "Body": "It does, nice post.",
       "CreatedDate": "Wednesday, 9 November 2022 17.40.07"
+    },
+    {
+      "Id": 7,
+      "Creator": {
+        "Id": 10,
+        "UserName": "TestUser124",
+        "Password": "testtest",
+        "joinedOn": "Friday, 11 November 2022 20.24.43"
+      },
+      "PostId": 2,
+      "Body": "This is a showcas of commenting feature.",
+      "CreatedDate": "Friday, 11 November 2022 20.25.28"
     }
   ]
 }

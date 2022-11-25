@@ -6,7 +6,7 @@
 @inject IAuthService authService
 @inject NavigationManager navMgr
 
-<SignLogUpIn Login=true OnClick="(credentials) => Login(credentials)"></SignLogUpIn>
+<SignLogUpIn Login=true OnClick="(credentials) => LoginAsync(credentials)"></SignLogUpIn>
 
 @if (!string.IsNullOrEmpty(resultMsg))
 {
@@ -16,7 +16,7 @@
 @code {
     private string resultMsg = "";
 
-    private async Task Login(string[] credentials)
+    private async Task LoginAsync(string[] credentials)
     {
         resultMsg = "";
 

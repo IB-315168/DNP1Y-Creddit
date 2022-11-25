@@ -35,7 +35,7 @@ namespace Data.DAOs
 
         public Task<IEnumerable<Comment>> GetAllAsync(int id)
         {
-            IEnumerable<Comment> comments = context.Comments.Where(c => c.PostId == id);
+            IEnumerable<Comment> comments = context.Comments.Where(c => c.Post.Id == id);
             return Task.FromResult(comments);
         }
     }
