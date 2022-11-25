@@ -1,8 +1,6 @@
 using Application.DAOInterfaces;
 using Application.Logic;
 using Application.LogicInterfaces;
-using Data.DAOs;
-using Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -18,7 +16,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<FileContext>();
 builder.Services.AddScoped<IUserDAO, UserEfcDAO>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
